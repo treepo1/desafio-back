@@ -5,14 +5,7 @@ const MY_PASS =  process.env.DB_PASS;
 const MY_DB = process.env.DB_NAME;
 const MY_PORT = process.env.DB_PORT;
 
-const connection = mysql.createConnection({
-    host: MY_HOST,
-    user: MY_USER,
-    password: MY_PASS,
-    database: MY_DB,
-    multipleStatements: true
-
-});
+const connection = mysql.createConnection(process.env.CLEAR_DATABASE_URL);
 
 connection.connect((err) => {
     if (err) throw err;
