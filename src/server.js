@@ -10,6 +10,7 @@ const routes = require('./routes');
 
 const server = express();
 
+const port = process.env.PORT || 3000
 
 server.use(cors());
 server.use(bodyParser.urlencoded({extended: false}));
@@ -17,6 +18,6 @@ server.use(bodyParser.json());
 
 server.use('/api', routes);
 
-server.listen(process.env.PORT, () => {
+server.listen(port, () => {
     console.log(`Server running on: http://localhost:${process.env.PORT}`)
 })
