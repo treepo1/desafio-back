@@ -5,11 +5,12 @@ const MY_PASS =  process.env.DB_PASS;
 const MY_DB = process.env.DB_NAME;
 const MY_PORT = process.env.DB_PORT;
 
-const connection = mysql.createConnection(process.env.CLEAR_DATABASE_URL);
+const connection = mysql.createPool(process.env.CLEAR_DATABASE_URL);
 
-connection.connect((err) => {
-    if (err) throw err;
-    console.log(`Conected to database: ${process.env.DB_NAME}`)
-})
+connection.query('select 1 + 1', (err, rows) => { 
+if(err) throw err;
+console.log(`Conected to database: ${process.env.DB_NAME}`)
+});
+
 
 module.exports = connection;
